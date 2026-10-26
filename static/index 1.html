@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SnapSave — Free All-in-One Video Downloader | YouTube, Facebook, Instagram, TikTok</title>
+<meta name="description" content="SnapSave is a free online video downloader. Save videos from YouTube, Facebook, Instagram and TikTok in HD quality or as MP3. Fast, free, no sign-up.">
+<meta property="og:title" content="SnapSave — All-in-One Video Downloader">
+<meta property="og:description" content="Download videos from YouTube, Facebook, Instagram & TikTok in HD or MP3. Free, fast, no sign-up.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#0b1220; --navy2:#111a2e; --ink:#0f172a; --body:#334155; --muted:#64748b;
+    --line:#e2e8f0; --bg:#f6f8fc; --card:#ffffff;
+    --brand:#6d28d9; --brand2:#2563eb; --accent:#e11d48;
+    --grad:linear-gradient(92deg,#7c3aed,#2563eb);
+    --shadow:0 20px 50px -12px rgba(15,23,42,.18);
+    --radius:16px;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter','Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  /* ---------- Header ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px;color:var(--ink);letter-spacing:-.02em}
+  .logo-badge{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;flex:none}
+  .logo-badge svg{width:19px;height:19px;fill:#fff}
+  .logo em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .nav-links{display:flex;gap:28px;font-size:14.5px;font-weight:500;color:var(--body)}
+  .nav-links a:hover{color:var(--brand)}
+  .nav-cta{background:var(--ink);color:#fff;padding:9px 18px;border-radius:999px;font-size:14px;font-weight:600}
+  .nav-cta:hover{background:var(--brand)}
+  @media(max-width:720px){.nav-links{display:none}}
+
+  /* ---------- Hero ---------- */
+  .hero{background:radial-gradient(900px 420px at 15% -10%,rgba(124,58,237,.20),transparent 60%),radial-gradient(800px 400px at 90% -10%,rgba(37,99,235,.18),transparent 60%),linear-gradient(180deg,#0b1220,#131f3d);color:#fff;padding:72px 0 96px;text-align:center}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);color:#e2e8f0;font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px}
+  .hero-badge i{width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block}
+  .hero h1{font-size:clamp(32px,5.4vw,52px);font-weight:800;line-height:1.12;letter-spacing:-.03em;margin:22px auto 14px;max-width:760px}
+  .hero h1 span{background:linear-gradient(92deg,#a78bfa,#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:#c3cede;font-size:clamp(15px,2vw,18px);max-width:620px;margin:0 auto}
+  .platforms{margin-top:28px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .pf{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);padding:8px 15px;border-radius:999px;font-size:13.5px;font-weight:600;color:#eef2ff}
+  .dot{width:9px;height:9px;border-radius:3px;flex:none}
+  .d-yt{background:#ff0033}.d-fb{background:#1877f2}.d-ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}.d-tt{background:#22d3ee}.d-x{background:#e7e9ea}
+
+  /* ---------- Tool card ---------- */
+  .tool-wrap{margin-top:-58px;position:relative;z-index:5}
+  .tool{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:28px}
+  .tool-row{display:flex;gap:10px;flex-wrap:wrap}
+  .input-wrap{flex:1;min-width:250px;display:flex;align-items:center;gap:10px;border:2px solid var(--line);border-radius:13px;padding:0 6px 0 16px;background:#fbfcfe;transition:.15s}
+  .input-wrap:focus-within{border-color:var(--brand);background:#fff;box-shadow:0 0 0 4px rgba(109,40,217,.10)}
+  .input-wrap svg{width:18px;height:18px;fill:#94a3b8;flex:none}
+  input[type=url]{flex:1;border:none;outline:none;background:transparent;font-size:15.5px;padding:15px 0;color:var(--ink);font-family:inherit;min-width:0}
+  .paste-btn{background:#eef2ff;color:var(--brand);border:none;font-weight:600;font-size:13.5px;padding:9px 14px;border-radius:9px;cursor:pointer;white-space:nowrap}
+  .paste-btn:hover{background:#e0e7ff}
+  .fetch-btn{background:var(--grad);color:#fff;border:none;font-weight:700;font-size:15.5px;padding:0 30px;border-radius:13px;cursor:pointer;min-height:56px;box-shadow:0 10px 24px -8px rgba(109,40,217,.55);transition:.15s}
+  .fetch-btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+  .fetch-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+  .hint{text-align:center;color:var(--muted);font-size:13px;margin-top:14px}
+  #status{margin-top:16px;text-align:center;font-size:14.5px;font-weight:500;min-height:22px}
+  #status.error{color:#dc2626} #status.ok{color:#16a34a}
+  .spinner{display:inline-block;width:15px;height:15px;border:3px solid rgba(109,40,217,.25);border-top-color:var(--brand);border-radius:50%;animation:spin .8s linear infinite;vertical-align:-3px;margin-right:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .trust{display:flex;justify-content:center;gap:8px 34px;flex-wrap:wrap;margin-top:22px;padding-top:20px;border-top:1px dashed var(--line)}
+  .trust div{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--body)}
+  .trust svg{width:17px;height:17px;fill:#16a34a}
+
+  /* ---------- Result ---------- */
+  #result{display:none;margin-top:26px;border-top:1px solid var(--line);padding-top:24px}
+  .result-head{display:flex;gap:18px;flex-wrap:wrap}
+  .thumb-wrap{position:relative;flex:none}
+  .thumb-wrap img{width:250px;max-width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;display:block;background:#0f172a}
+  .dur-chip{position:absolute;right:8px;bottom:8px;background:rgba(2,6,23,.85);color:#fff;font-size:12px;font-weight:600;padding:3px 8px;border-radius:6px}
+  .result-info{flex:1;min-width:230px}
+  .result-info h2{font-size:18.5px;color:var(--ink);line-height:1.4;letter-spacing:-.01em;margin-bottom:10px}
+  .tags{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{background:#f1f5f9;color:var(--body);border:1px solid var(--line);font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:999px}
+  .tag.brand{background:#ede9fe;color:var(--brand);border-color:#ddd6fe}
+  .q-title{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:22px 0 12px}
+  .q-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+  .btn-dl{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:14px 16px;cursor:pointer;font-family:inherit;text-align:left;transition:.15s;width:100%}
+  .btn-dl:hover{border-color:var(--brand);box-shadow:0 8px 20px -10px rgba(109,40,217,.35);transform:translateY(-1px)}
+  .btn-dl .lbl{font-weight:700;color:var(--ink);font-size:14.5px;display:block}
+  .btn-dl .sub{font-size:12px;color:var(--muted);font-weight:500}
+  .btn-dl svg{width:19px;height:19px;fill:var(--brand);flex:none}
+  .btn-dl.fourk{background:linear-gradient(120deg,#f5f3ff,#eff6ff);border-color:#c4b5fd}
+  .btn-dl.fourk .lbl{color:#4c1d95}
+  .btn-dl.fourk svg{fill:#7c3aed}
+  .k4{font-size:10.5px;font-weight:800;letter-spacing:.05em;background:linear-gradient(92deg,#7c3aed,#2563eb);color:#fff;padding:2px 7px;border-radius:5px;margin-left:7px;vertical-align:2px}
+  .btn-dl.best{background:var(--ink);border-color:var(--ink)}
+  .btn-dl.best .lbl{color:#fff}.btn-dl.best .sub{color:#94a3b8}.btn-dl.best svg{fill:#4ade80}
+  .rec{font-size:10.5px;font-weight:800;letter-spacing:.05em;background:#4ade80;color:#052e12;padding:2px 7px;border-radius:5px;margin-left:7px;vertical-align:2px}
+  .fineprint{font-size:12.5px;color:var(--muted);margin-top:16px}
+
+  /* ---------- Sections ---------- */
+  section.block{padding:74px 0 6px}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 38px}
+  .sec-head .kicker{font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+  .sec-head h2{font-size:clamp(25px,3.6vw,34px);font-weight:800;color:var(--ink);letter-spacing:-.02em;margin:8px 0 10px}
+  .sec-head p{color:var(--muted);font-size:15.5px}
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;transition:.15s}
+  .pcard:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+  .pcard .ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .pcard h3{font-size:16.5px;color:var(--ink);margin-bottom:6px}
+  .pcard p{font-size:14px;color:var(--muted)}
+  .step-n{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:10px}
+  details summary{cursor:pointer;font-weight:600;color:var(--ink);font-size:15.5px;list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  details p{margin-top:10px;font-size:14.5px;color:var(--muted)}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy);color:#94a3b8;margin-top:80px}
+  .foot{padding:52px 0 34px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px}
+  @media(max-width:720px){.foot{grid-template-columns:1fr}}
+  .foot h4{color:#fff;font-size:15px;margin-bottom:14px}
+  .foot a{display:block;font-size:14px;padding:4px 0}
+  .foot a:hover{color:#fff}
+  .foot .logo{color:#fff}
+  .foot p{font-size:13.5px;max-width:340px}
+  .legal{border-top:1px solid rgba(255,255,255,.10);padding:20px 0 26px;font-size:12.5px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">
+      <span class="logo-badge"><svg viewBox="0 0 24 24"><path d="M12 3v10.6l3.3-3.3L16.7 12l-4.7 4.7L7.3 12l1.4-1.4 3.3 3.3V3h0zM5 19h14v2H5z" transform="translate(0 -1)"/></svg></span>
+      Snap<em>Save</em>
+    </a>
+    <nav class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#platforms">Platforms</a>
+      <a href="#features">Features</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="nav-cta" href="#tool">Download Now</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="container">
+    <span class="hero-badge"><i></i> 100% Free &nbsp;•&nbsp; No Sign-Up Required</span>
+    <h1>Download Videos from <span>Any Platform</span>, in Seconds</h1>
+    <p>Paste a link from YouTube, Facebook, Instagram or TikTok and save the video in up to 4K Ultra HD quality — or extract the audio as MP3. Right in your browser.</p>
+    <div class="platforms">
+      <span class="pf"><span class="dot d-yt"></span>YouTube</span>
+      <span class="pf"><span class="dot d-fb"></span>Facebook</span>
+      <span class="pf"><span class="dot d-ig"></span>Instagram</span>
+      <span class="pf"><span class="dot d-tt"></span>TikTok</span>
+      <span class="pf"><span class="dot d-x"></span>X / Twitter</span>
+    </div>
+  </div>
+</div>
+
+<div class="container tool-wrap" id="tool">
+  <div class="tool">
+    <div class="tool-row">
+      <div class="input-wrap">
+        <svg viewBox="0 0 24 24"><path d="M10.6 13.4a4 4 0 0 0 5.7 0l3-3a4 4 0 1 0-5.7-5.7l-1.5 1.5 1.4 1.4 1.5-1.5a2 2 0 1 1 2.9 2.9l-3 3a2 2 0 0 1-2.9 0zM13.4 10.6a4 4 0 0 0-5.7 0l-3 3a4 4 0 1 0 5.7 5.7l1.5-1.5-1.4-1.4-1.5 1.5a2 2 0 1 1-2.9-2.9l3-3a2 2 0 0 1 2.9 0z"/></svg>
+        <input type="url" id="urlInput" placeholder="Paste your video link here…">
+        <button class="paste-btn" id="pasteBtn" type="button">Paste</button>
+      </div>
+      <button class="fetch-btn" id="fetchBtn" type="button">Fetch Video</button>
+    </div>
+    <p class="hint">Supports YouTube videos &amp; Shorts, Facebook videos &amp; Reels, Instagram Reels &amp; posts, and TikTok videos.</p>
+    <div id="status"></div>
+
+    <div id="result">
+      <div class="result-head">
+        <div class="thumb-wrap">
+          <img id="thumb" alt="Video thumbnail">
+          <span class="dur-chip" id="vduration"></span>
+        </div>
+        <div class="result-info">
+          <h2 id="vtitle"></h2>
+          <div class="tags">
+            <span class="tag brand" id="vplatform"></span>
+            <span class="tag" id="vuploader"></span>
+            <span class="tag" id="vviews"></span>
+          </div>
+        </div>
+      </div>
+      <p class="q-title">Select Quality</p>
+      <div class="q-grid">
+        <button class="btn-dl fourk" data-q="2160" type="button"><span><span class="lbl">4K Ultra HD <span class="k4">2160p</span></span><span class="sub">Maximum quality • largest file</span></span><svg viewBox="0 0 24 24"><path d="M12 3v10.2l3.6-3.6L17 11l-5 5-5-5 1.4-1.4L11 13.2V3h1zm-7 15h14v3H5z" transform="translate(0 -1)"/></svg></button>
+        <button class="btn-dl best" data-q="best" type="button"><span><span class="lbl">Best Quality <span class="rec">HD</span></span><span class="sub">Highest available resolution</span></span><svg viewBox="0 0 24 24"><path d="M12 3v10.2l3.6-3.6L17 11l-5 5-5-5 1.4-1.4L11 13.2V3h1zm-7 15h14v3H5z" transform="translate(0 -1)"/></svg></button>
+        <button class="btn-dl" data-q="720" type="button"><span><span class="lbl">720p</span><span class="sub">HD • balanced size</span></span><svg viewBox="0 0 24 24"><path d="M12 3v10.2l3.6-3.6L17 11l-5 5-5-5 1.4-1.4L11 13.2V3h1zm-7 15h14v3H5z" transform="translate(0 -1)"/></svg></button>
+        <button class="btn-dl" data-q="480" type="button"><span><span class="lbl">480p</span><span class="sub">SD • smaller file</span></span><svg viewBox="0 0 24 24"><path d="M12 3v10.2l3.6-3.6L17 11l-5 5-5-5 1.4-1.4L11 13.2V3h1zm-7 15h14v3H5z" transform="translate(0 -1)"/></svg></button>
+        <button class="btn-dl" data-q="360" type="button"><span><span class="lbl">360p</span><span class="sub">Fastest download</span></span><svg viewBox="0 0 24 24"><path d="M12 3v10.2l3.6-3.6L17 11l-5 5-5-5 1.4-1.4L11 13.2V3h1zm-7 15h14v3H5z" transform="translate(0 -1)"/></svg></button>
+        <button class="btn-dl" data-q="mp3" type="button"><span><span class="lbl">MP3 Audio</span><span class="sub">Audio only • 192 kbps</span></span><svg viewBox="0 0 24 24"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg></button>
+      </div>
+      <p class="fineprint">The file is prepared on the server first — HD files can take a few seconds before the download starts. TikTok videos are saved without watermark where the source allows it.</p>
+    </div>
+
+    <div class="trust">
+      <div><svg viewBox="0 0 24 24"><path d="M12 2l8 3.5V11c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5.5z"/><path fill="#fff" d="M10.6 15.6l-2.3-2.3 1.1-1.1 1.2 1.2 4-4 1.1 1.1z"/></svg> Safe &amp; Private</div>
+      <div><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L9.5 22 19 10h-6.5z"/></svg> Lightning Fast</div>
+      <div><svg viewBox="0 0 24 24"><path d="M12 3a7 7 0 0 1 7 7c0 2.4-1.2 4.2-2.6 5.4-.9.8-1.4 2-1.4 3.1V19a3 3 0 0 1-6 0v-.5c0-1.1-.5-2.3-1.4-3.1C6.2 14.2 5 12.4 5 10a7 7 0 0 1 7-7z" opacity=".95"/><path d="M4 4h16v2.2H4zM4 20.5h16V22H4z" opacity="0"/></svg> No Watermark</div>
+      <div><svg viewBox="0 0 24 24"><path d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12zm0 2.3c-3 0-9 1.5-9 4.5V21h18v-2.2c0-3-6-4.5-9-4.5z"/></svg> No Sign-Up</div>
+      <div><svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 1-1z" opacity="0"/><path d="M7 4h11a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H8l-4.6 3.6c-.4.3-.9 0-.9-.5V6a2 2 0 0 1 2-2z" opacity="0"/><path d="M12 2a5 5 0 0 1 5 5v3h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h1V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v3h6V7a3 3 0 0 0-3-3z" opacity="0"/><path d="M8.5 5A2.5 2.5 0 0 0 6 7.5v9A2.5 2.5 0 0 0 8.5 19h7a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 15.5 5zM12 7a4 4 0 1 1-3.5 5.9L5 11.5V7A2.5 2.5 0 0 1 7.5 4.5h9A2.5 2.5 0 0 1 19 7v4.5l-3.5 1.4A4 4 0 0 1 12 7z" opacity="0"/><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm7 4a5.5 5.5 0 1 0 3.9 9.4L21 21v-6.1A5.5 5.5 0 0 0 12 7z" opacity="0"/><rect x="3" y="5" width="18" height="14" rx="2"/><path fill="#fff" d="M10 9.2v5.6l4.8-2.8z"/></svg> HD Quality</div>
+    </div>
+  </div>
+</div>
+
+<section class="block" id="how">
+  <div class="container">
+    <div class="sec-head">
+      <div class="kicker">Simple Process</div>
+      <h2>How It Works</h2>
+      <p>Three steps. No software to install, nothing to configure.</p>
+    </div>
+    <div class="grid3">
+      <div class="pcard"><div class="step-n">1</div><h3>Copy the Link</h3><p>Open YouTube, Facebook, Instagram or TikTok and copy the link of the video you want to save.</p></div>
+      <div class="pcard"><div class="step-n">2</div><h3>Paste &amp; Fetch</h3><p>Paste the link into the box above and press Fetch Video. We will find the video and show you every available quality.</p></div>
+      <div class="pcard"><div class="step-n">3</div><h3>Download</h3><p>Pick HD, a smaller size, or MP3 audio — your file is prepared instantly and the download begins.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="platforms">
+  <div class="container">
+    <div class="sec-head">
+      <div class="kicker">Supported Platforms</div>
+      <h2>One Downloader for Everything</h2>
+      <p>Powered by a professional extraction engine that supports over 1,000 websites.</p>
+    </div>
+    <div class="grid3">
+      <div class="pcard"><div class="ic" style="background:#ffe4e6"><span class="dot d-yt" style="width:16px;height:16px;border-radius:5px"></span></div><h3>YouTube Downloader</h3><p>Videos and Shorts in up to 4K, with an MP3 audio option for music and podcasts.</p></div>
+      <div class="pcard"><div class="ic" style="background:#dbeafe"><span class="dot d-fb" style="width:16px;height:16px;border-radius:5px"></span></div><h3>Facebook Downloader</h3><p>Public videos and Reels in HD — no app, no login, no browser extension.</p></div>
+      <div class="pcard"><div class="ic" style="background:#fae8ff"><span class="dot d-ig" style="width:16px;height:16px;border-radius:5px"></span></div><h3>Instagram Downloader</h3><p>Reels and video posts saved in their original quality, ready to repost or archive.</p></div>
+      <div class="pcard"><div class="ic" style="background:#cffafe"><span class="dot d-tt" style="width:16px;height:16px;border-radius:5px"></span></div><h3>TikTok — No Watermark</h3><p>TikTok videos saved clean, without the watermark, wherever the source allows it.</p></div>
+      <div class="pcard"><div class="ic" style="background:#f1f5f9"><span class="dot d-x" style="width:16px;height:16px;border-radius:5px;border:1px solid #cbd5e1"></span></div><h3>X / Twitter Downloader</h3><p>Save videos and GIFs from posts in the best quality the platform serves.</p></div>
+      <div class="pcard"><div class="ic" style="background:#ede9fe"><span style="font-size:19px">＋</span></div><h3>1,000+ More Sites</h3><p>Vimeo, Dailymotion, Reddit, Twitch clips and hundreds more — if it plays online, try pasting it here.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="features">
+  <div class="container">
+    <div class="sec-head">
+      <div class="kicker">Why SnapSave</div>
+      <h2>Built to Be Simple — and Proper</h2>
+    </div>
+    <div class="grid3">
+      <div class="pcard"><h3>Up to 4K Ultra HD</h3><p>Where the source video offers it, download in full 2160p 4K. Video and audio streams are merged on the server with FFmpeg, so every download arrives as one proper file — never a silent video.</p></div>
+      <div class="pcard"><h3>MP3 Extraction</h3><p>One click converts any video to a clean 192 kbps MP3. Ideal for songs, lectures and podcasts.</p></div>
+      <div class="pcard"><h3>Private by Design</h3><p>Files are prepared in a temporary folder and deleted automatically right after your download. Nothing is stored.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="faq" style="padding-bottom:10px">
+  <div class="container" style="max-width:820px">
+    <div class="sec-head">
+      <div class="kicker">FAQ</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <details><summary>Is this video downloader really free?</summary><p>Yes. Downloading is completely free, with no sign-up, no download limits on this page, and no software to install.</p></details>
+    <details><summary>Can I download TikTok videos without a watermark?</summary><p>Yes — wherever TikTok's source serves a clean stream, SnapSave saves the video without the watermark.</p></details>
+    <details><summary>Why does the HD download take a few seconds to start?</summary><p>For HD, the video and audio are separate streams. Our server merges them into a single MP4 with FFmpeg before your download starts, which takes a few seconds on longer videos.</p></details>
+    <details><summary>Can I download private videos?</summary><p>No. Only public videos can be fetched, because the server is not logged into your account. Please only download content you own or have permission to save.</p></details>
+    <details><summary>Does it work on mobile?</summary><p>Yes, SnapSave is fully responsive and works in any modern mobile browser — no app needed.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#"><span class="logo-badge"><svg viewBox="0 0 24 24"><path d="M12 3v10.6l3.3-3.3L16.7 12l-4.7 4.7L7.3 12l1.4-1.4 3.3 3.3V3h0zM5 19h14v2H5z" transform="translate(0 -1)"/></svg></span>Snap<em>Save</em></a>
+        <p style="margin-top:14px">The fast, free and simple way to save videos from YouTube, Facebook, Instagram, TikTok and 1,000+ other sites.</p>
+      </div>
+      <div>
+        <h4>Downloaders</h4>
+        <a href="#tool">YouTube Downloader</a>
+        <a href="#tool">Facebook Downloader</a>
+        <a href="#tool">Instagram Downloader</a>
+        <a href="#tool">TikTok Downloader</a>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#how">How It Works</a>
+        <a href="#platforms">Platforms</a>
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 SnapSave. All rights reserved.</span>
+      <span>For personal use only. Please respect copyright — download only content you own or have the right to save.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+let currentUrl = "";
+
+$("pasteBtn").onclick = async () => {
+  try { $("urlInput").value = await navigator.clipboard.readText(); $("urlInput").focus(); }
+  catch(e){ $("urlInput").focus(); setStatus("Press Ctrl+V to paste your link.", ""); }
+};
+
+$("fetchBtn").onclick = fetchInfo;
+$("urlInput").addEventListener("keydown", e => { if(e.key === "Enter") fetchInfo(); });
+
+function setStatus(msg, cls){
+  $("status").innerHTML = msg;
+  $("status").className = cls || "";
+}
+
+function fmtViews(n){
+  if(!n) return "";
+  if(n >= 1e6) return (n/1e6).toFixed(1).replace(/\.0$/,"") + "M views";
+  if(n >= 1e3) return (n/1e3).toFixed(1).replace(/\.0$/,"") + "K views";
+  return n + " views";
+}
+
+async function fetchInfo(){
+  const url = $("urlInput").value.trim();
+  if(!url){ setStatus("Please paste a video link first.", "error"); return; }
+  currentUrl = url;
+  $("result").style.display = "none";
+  $("fetchBtn").disabled = true;
+  $("fetchBtn").textContent = "Fetching…";
+  setStatus('<span class="spinner"></span>Fetching video information…', "");
+  try {
+    const r = await fetch("/api/info", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({url})
+    });
+    const d = await r.json();
+    if(!r.ok) throw new Error(d.error || "Something went wrong. Please try again.");
+    $("thumb").src = d.thumbnail || "";
+    $("thumb").style.display = d.thumbnail ? "block" : "none";
+    $("vtitle").textContent = d.title || "Video";
+    $("vplatform").textContent = d.platform || "Video";
+    $("vduration").textContent = d.duration_text || "";
+    $("vduration").style.display = d.duration_text ? "block" : "none";
+    $("vuploader").textContent = d.uploader ? ("By " + d.uploader) : "";
+    $("vuploader").style.display = d.uploader ? "inline-flex" : "none";
+    const views = fmtViews(d.view_count);
+    $("vviews").textContent = views;
+    $("vviews").style.display = views ? "inline-flex" : "none";
+    $("result").style.display = "block";
+    $("result").scrollIntoView({behavior:"smooth", block:"nearest"});
+    setStatus("Video found — select a quality below to download.", "ok");
+  } catch(e){
+    setStatus(e.message, "error");
+  } finally {
+    $("fetchBtn").disabled = false;
+    $("fetchBtn").textContent = "Fetch Video";
+  }
+}
+
+document.querySelectorAll(".btn-dl").forEach(btn => {
+  btn.onclick = () => {
+    if(!currentUrl) return;
+    const q = btn.dataset.q;
+    setStatus("Preparing your " + (q === "mp3" ? "MP3" : q === "2160" ? "4K Ultra HD" : q === "best" ? "HD" : q + "p") + " file — your download will start automatically in a few seconds…", "");
+    window.location.href = "/api/download?url=" + encodeURIComponent(currentUrl) + "&quality=" + q;
+  };
+});
+</script>
+</body>
+</html>
